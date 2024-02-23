@@ -6,6 +6,8 @@ export const Context = createContext();
 export const ContextResultProvider = ({ children }) => {
     const [result, setResult] = useState([]);
     const [muscle, setMuscle] = useState('');
+    const [Loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,35 +22,27 @@ export const ContextResultProvider = ({ children }) => {
             };
             
             try {
+                setLoading(true);
                 const response = await axios.request(options);
                 console.log(response.data);
                 setResult(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error(error);
+                setLoading(false);
             }
         };
 
-        const debounce = (func, delay) => {
-            let timeoutId;
-            return function(...args) {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    func.apply(this, args);
-                }, delay);
-            };
-        };
+        fetchData(); // Call fetchData directly
 
-        const delayedFetchData = debounce(fetchData, 500); // Set debounce delay to 500ms
-
-        delayedFetchData(); // Call delayedFetchData directly inside useEffect
-
-    }, [muscle]);
+    }, [muscle]); // Remove debounce dependency
 
     const value = {
         result,
         setResult,
         muscle,
         setMuscle,
+        Loading,
     };
 
     return (
