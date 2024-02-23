@@ -7,6 +7,8 @@ export const ContextResultProvider = ({ children }) => {
     const [result, setResult] = useState([]);
     const [muscle, setMuscle] = useState('');
     const [Loading, setLoading] = useState(false);
+    const [BodyType, setBodyType] = useState('');
+    const [ParticularMuscle, setPatricularMuscle] = useState('');
 
 
     useEffect(() => {
@@ -43,6 +45,10 @@ export const ContextResultProvider = ({ children }) => {
         muscle,
         setMuscle,
         Loading,
+        setBodyType,
+        BodyType,
+        ParticularMuscle,
+        setPatricularMuscle,
     };
 
     return (
