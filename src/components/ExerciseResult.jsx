@@ -10,11 +10,14 @@ const ExerciseResult = () => {
 
   const handle = () => {
     setMuscle(value);
+    navigate(`/${value}`)
+    setMuscle('');
   };
 
   const btnhandle = (item) => {
     setMuscle(item.muscle);
     navigate(`/${item.muscle}`);
+    setMuscle(BodyType);
     console.log(item.muscle);
   };
 

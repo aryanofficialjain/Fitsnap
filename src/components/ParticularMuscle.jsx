@@ -1,13 +1,21 @@
-import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Context } from '../context/ContextResultProvider';
 
 const ParticularMuscle = () => {
     const { muscle } = useParams();
-    const particularMuscle = muscle;
+    const [Muscle, setMuscle] = useState(muscle);
     const { result } = useContext(Context);
+    const navigate = useNavigate();
 
-    const filteredResults = result.filter(item => item.muscle === particularMuscle);
+    const handle = () => {
+        navigate(`/exercise`);
+        
+    }
+
+
+    const filteredResults = result.filter(item => item.muscle === Muscle);
+
 
 
     if (filteredResults.length === 0) {
@@ -22,6 +30,7 @@ const ParticularMuscle = () => {
         <div>
             <div>
                 <h1>{muscle}</h1>
+                <button onClick={handle}>back</button>
                 <div>
                     {filteredResults.map((item, index) => (
                         <div key={index} className='w-50 p-4 m-5 shadow-md bg-white text-black'>
