@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Context } from '../context/ContextResultProvider';
+import MuscleVideo from './MuscleVideo';
+
 
 const ParticularMuscle = () => {
     const { muscle } = useParams();
@@ -9,8 +11,7 @@ const ParticularMuscle = () => {
     const navigate = useNavigate();
 
     const handle = () => {
-        navigate(`/exercise`);
-        
+        navigate(`/exercise`);   
     }
 
 
@@ -42,6 +43,7 @@ const ParticularMuscle = () => {
                             <h5>{item.type}</h5>
                         </div>
                     ))}
+                    <MuscleVideo />
                 </div>
             </div>
         </div>

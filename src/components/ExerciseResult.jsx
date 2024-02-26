@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ExerciseResult = () => {
   const [value, setValue] = useState('');
-  const { setMuscle, result, Loading, BodyType } = useContext(Context);
+  const { setMuscle, result, Loading, BodyType, setMuscleVideo } = useContext(Context);
   const navigate = useNavigate();
 
   const handle = () => {
@@ -15,7 +15,8 @@ const ExerciseResult = () => {
   };
 
   const btnhandle = (item) => {
-    setMuscle(item.muscle);
+    // setMuscle(item.muscle);
+    setMuscleVideo(item.muscle);
     navigate(`/${item.muscle}`);
     setMuscle(BodyType);
     console.log(item.muscle);
