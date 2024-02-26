@@ -47,18 +47,23 @@ export const ContextResultProvider = ({ children }) => {
         params: { q: `${MuscleVideo}` },
         headers: {
           "X-RapidAPI-Key":
-            "83888ec039mshe14aa2763a37e31p12244fjsn136ace113459",
+          import.meta.env.VITE_API,
           "X-RapidAPI-Host": "youtube-search-results.p.rapidapi.com",
         },
       };
 
       try {
+        setLoading(true);
         const response = await axios.request(options);
         console.log(response.data);
         console.log(response.data.videos);
         setVideoData(response.data.videos);
+        setLoading(false);
+
       } catch (error) {
         console.error(error);
+        setLoading(false);
+
       }
     };
 

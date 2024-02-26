@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Context } from '../context/ContextResultProvider';
 import MuscleVideo from './MuscleVideo';
+import Loader from './Loader';
 
 
 const ParticularMuscle = () => {
     const { muscle } = useParams();
     const [Muscle, setMuscle] = useState(muscle);
-    const { result } = useContext(Context);
+    const { result, Loading } = useContext(Context);
     const navigate = useNavigate();
 
     const handle = () => {
@@ -43,7 +44,11 @@ const ParticularMuscle = () => {
                             <h5>{item.type}</h5>
                         </div>
                     ))}
-                    <MuscleVideo />
+
+                    {
+                        Loading ? (<Loader/>) : ( <MuscleVideo />)
+                    }
+                   
                 </div>
             </div>
         </div>

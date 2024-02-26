@@ -7,7 +7,7 @@ const Loader = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '100vh', // Adjust the height based on your layout
+      height: '100vh', backgroundColor:'black', // Adjust the height based on your layout
     }}>
       <Puff
         height={80}
