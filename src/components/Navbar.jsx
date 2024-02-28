@@ -6,6 +6,7 @@ const Navbar = () => {
       <div><p>FITSNAP</p></div>
       <div>
         <Link to='/'><span>Home</span></Link>
+        <Link to='/profile'><span>Profile</span></Link>
         {/* add more page in the navbar */}
       </div>
       <div>
