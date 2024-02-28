@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Profiler } from 'react'
 import { BrowserRouter as Router,  Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import ExerciseResult from './components/ExerciseResult'
-import ParticularMuscle from './components/ParticularMuscle'
+import ParticularMuscle from './components/ParticularMuscle';
+import Profile from "./components/Profile";
 
 const App = () => {
   return (
