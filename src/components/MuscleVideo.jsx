@@ -14,7 +14,6 @@ const MuscleVideo = () => {
     <div className="flex items-center flex-wrap justify-center gap-2">
       {VideoData.map((video, index) => (
         <div key={index}>
-          <h1>{video.title}</h1>
           <ReactPlayer controls={true} url={video.link} width={"500px"} height={"250px"} />
         </div>
       ))}
