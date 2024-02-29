@@ -15,7 +15,7 @@ const Login = () => {
     try{
       await account.createEmailSession(email, password);
       navigate('/profile');
-    } catch{
+    } catch(error){
       console.log(error);
     }
 
@@ -25,10 +25,9 @@ const Login = () => {
   }
   
   return (
-    <div>
-      <h1>Login</h1>
+    <div className='flex flex-col items-center justify-center mt-12 gap-4'>
       <input type="email" placeholder='Email' value={email} onChange={(e)=> setemail(e.target.value)} />
-      <input type="password" placeholder='Password' value={password} onChange={(e)=> setpassword(e.target.value)} />
+      <input type="password" placeholder='Password' autoComplete='off' value={password} onChange={(e)=> setpassword(e.target.value)} />
       <button onClick={loginuser}>Login</button>
 
     </div>

@@ -8,6 +8,7 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   // Sign up
   const signupUser = async (e) => {
@@ -15,7 +16,7 @@ const Signup = () => {
 
     // Validate password
     if (password.length < 8) {
-      console.log('Password must be at least 8 characters long');
+      setError('Password must be at least 8 characters long');
       return;
     }
 
@@ -28,25 +29,26 @@ const Signup = () => {
 
     promise.then(
       function (response) {
-        console.log(response); //success
+        console.log(response); // Success
         navigate('/profile')
       },
       function (error) {
-        console.log(error); //Failure
+        console.log(error); // Failure
       }
     );
 
+    // Clear form fields after sign-up attempt
     setEmail('');
     setPassword('');
   };
 
   return (
     <div>
-      <h1 className='text-center'>Sign up</h1>
-      <form action="#" method='POST'>
-        <input type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+      <form action="#" method="POST" className="flex flex-col items-center justify-center mt-12 gap-4">
+        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="password" placeholder="Password" autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)} />
+        {error && <p className="text-red-500">{error}</p>}
         <button onClick={signupUser}>Sign Up</button>
       </form>
     </div>

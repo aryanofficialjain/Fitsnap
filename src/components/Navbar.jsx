@@ -9,7 +9,7 @@ const Navbar = () => {
         <Link to='/profile'><span>Profile</span></Link>
         {/* add more page in the navbar */}
       </div>
-      <div>
+      <div className='flex gap-6'>
         <Link to='/login'><button>Login</button></Link>
         <Link to='/signup'><button>Signup</button></Link>
         </div>
