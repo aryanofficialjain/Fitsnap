@@ -10,6 +10,7 @@ export const ContextResultProvider = ({ children }) => {
   const [BodyType, setBodyType] = useState("");
   const [MuscleVideo, setMuscleVideo] = useState("");
   const [VideoData, setVideoData] = useState([]);
+  const [User, setUser] = useState(false);
 
 
   useEffect(() => {
@@ -81,6 +82,8 @@ export const ContextResultProvider = ({ children }) => {
     MuscleVideo,
     setMuscleVideo,
     VideoData,
+    User,
+    setUser,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

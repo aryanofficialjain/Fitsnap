@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { account } from '../appwrite/appwrite';
+import {Context} from "../context/ContextResultProvider";
 
 
 const Login = () => {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
   const navigate = useNavigate();
+  const {User, setUser} = useContext(Context)
 
 
   const loginuser = async(e) => {
@@ -15,6 +17,7 @@ const Login = () => {
     try{
       await account.createEmailSession(email, password);
       navigate('/profile');
+      setUser(true);
     } catch(error){
       console.log(error);
     }
