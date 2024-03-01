@@ -8,12 +8,7 @@ const Navbar = () => {
       <div><p>FITSNAP</p></div>
       <div className='flex gap-3'>
         <Link to='/'><span>Home</span></Link>
-        {User ? (<Link to='/profile'><span>Profile</span></Link>): (null)}
-        {/* add more page in the navbar */}
-      </div>
-      <div className='flex gap-6'>
-        <Link to='/login'><button>Login</button></Link>
-        <Link to='/signup'><button>Signup</button></Link>
+        <Link to='/profile'><span>Profile</span></Link>
         </div>
     </div>
   )

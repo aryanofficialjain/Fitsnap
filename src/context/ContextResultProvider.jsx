@@ -10,8 +10,34 @@ export const ContextResultProvider = ({ children }) => {
   const [BodyType, setBodyType] = useState("");
   const [MuscleVideo, setMuscleVideo] = useState("");
   const [VideoData, setVideoData] = useState([]);
-  const [User, setUser] = useState(false);
+  const [BMI, setBMI] = useState('');
+  const [BMIresult, setBMIresult] = useState('');
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        url: 'https://body-mass-index-bmi-calculator.p.rapidapi.com/weight-category',
+        params: { bmi: BMI },
+        headers: {
+          'X-RapidAPI-Key': '83888ec039mshe14aa2763a37e31p12244fjsn136ace113459',
+          'X-RapidAPI-Host': 'body-mass-index-bmi-calculator.p.rapidapi.com'
+        }
+      };
+      
+      try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        setBMIresult(response.data.weightCategory);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    fetchData(); // Call the fetchData function
+  }, [BMI]); // Pass an empty dependency array
+  
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +54,7 @@ export const ContextResultProvider = ({ children }) => {
       try {
         setLoading(true);
         const response = await axios.request(options);
-        console.log(response.data);
+        // console.log(response.data);
         setResult(response.data);
         setLoading(false);
       } catch (error) {
@@ -56,8 +82,8 @@ export const ContextResultProvider = ({ children }) => {
       try {
         setLoading(true);
         const response = await axios.request(options);
-        console.log(response.data);
-        console.log(response.data.videos);
+        // console.log(response.data);
+        // console.log(response.data.videos);
         setVideoData(response.data.videos);
         setLoading(false);
 
@@ -82,8 +108,9 @@ export const ContextResultProvider = ({ children }) => {
     MuscleVideo,
     setMuscleVideo,
     VideoData,
-    User,
-    setUser,
+    BMI,
+    setBMI,
+    BMIresult,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
